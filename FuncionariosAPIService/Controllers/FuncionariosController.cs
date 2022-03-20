@@ -11,7 +11,7 @@ using System.Web.Http.Description;
 
 namespace FuncionariosAPIService.Controllers
 {
-
+    [Authorize]
     public class FuncionariosController : ApiController
     {
         private FuncionarioDbContext db = new FuncionarioDbContext();
