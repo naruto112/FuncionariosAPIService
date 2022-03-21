@@ -19,7 +19,7 @@ namespace FuncionariosAPIService.Services
 
         public List<Funcionario> execute()
         {
-            return (Funcionario)_funcionarioRepository.GetFuncionarios();
+            return (List<Funcionario>)_funcionarioRepository.GetFuncionarios();
         }
     }
 }

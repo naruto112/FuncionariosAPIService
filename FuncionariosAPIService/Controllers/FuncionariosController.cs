@@ -19,9 +19,9 @@ namespace FuncionariosAPIService.Controllers
         private FuncionarioGet _funcionarioGet = new FuncionarioGet();
 
         // GET: api/Funcionarios      
-        public IQueryable<Funcionario> GetFuncionarios()
+        public List<Funcionario> GetFuncionarios()
         {
-            return (IQueryable<Funcionario>)_funcionarioGet.execute();
+            return (List<Funcionario>)_funcionarioGet.execute();
         }
         // GET: api/Funcionarios/5
         [ResponseType(typeof(Funcionario))]
