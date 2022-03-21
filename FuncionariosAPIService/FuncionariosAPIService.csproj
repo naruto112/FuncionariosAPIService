@@ -199,6 +199,7 @@
     <Compile Include="ProviderDeTokensDeAcesso.cs" />
     <Compile Include="Repositories\FuncionarioRepository.cs" />
     <Compile Include="Services\FuncionarioAtualizar.cs" />
+    <Compile Include="Services\FuncionarioDeletar.cs" />
     <Compile Include="Services\FuncionarioExists.cs" />
     <Compile Include="Services\FuncionarioGet.cs" />
     <Compile Include="Services\FuncionarioGetID.cs" />

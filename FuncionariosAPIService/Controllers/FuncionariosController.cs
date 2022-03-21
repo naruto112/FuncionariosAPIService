@@ -21,6 +21,7 @@ namespace FuncionariosAPIService.Controllers
         private FuncionarioInserir _funcionarioInserir = new FuncionarioInserir();
         private FuncionarioAtualizar _funcionarioAtualizar = new FuncionarioAtualizar();
         private FuncionarioExists _funcionarioExists = new FuncionarioExists();
+        private FuncionarioDeletar _funcionarioDeletar = new FuncionarioDeletar();
 
         // GET: api/Funcionarios      
         public List<Funcionario> GetFuncionarios()
@@ -84,13 +85,13 @@ namespace FuncionariosAPIService.Controllers
         [ResponseType(typeof(Funcionario))]
         public IHttpActionResult DeleteFuncionario(int id)
         {
-            Funcionario funcionario = db.Funcionarios.Find(id);
+            Funcionario funcionario = _funcionarioGetID.execute(id);
+
             if (funcionario == null)
             {
                 return NotFound();
             }
-            db.Funcionarios.Remove(funcionario);
-            db.SaveChanges();
+            _funcionarioDeletar.execute(funcionario.FuncionarioId);
             return Ok(funcionario);
         }
         protected override void Dispose(bool disposing)
@@ -100,10 +101,6 @@ namespace FuncionariosAPIService.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-        private bool FuncionarioExists(int id)
-        {
-            return db.Funcionarios.Count(e => e.FuncionarioId == id) > 0;
         }
     }
 }
