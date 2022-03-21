@@ -1,4 +1,5 @@
-﻿using FuncionariosAPIService.Models;
+﻿using FuncionariosAPIService.Interfaces;
+using FuncionariosAPIService.Models;
 using FuncionariosAPIService.Repositories;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,16 @@ namespace FuncionariosAPIService.Services
 {
     public class FuncionarioGet
     {
-        //private FuncionarioRepository _funcionarioRepository;
-        //public Funcionario execute()
-        //{
-        //    return (Funcionario)_funcionarioRepository.GetFuncionarios();
-        //}
+        private IFuncionario _funcionarioRepository;
+
+        public FuncionarioGet()
+        {
+            this._funcionarioRepository = new FuncionarioRepository(new FuncionarioDbContext());
+        }
+
+        public List<Funcionario> execute()
+        {
+            return (Funcionario)_funcionarioRepository.GetFuncionarios();
+        }
     }
 }

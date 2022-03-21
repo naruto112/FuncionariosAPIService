@@ -1,4 +1,5 @@
 ﻿using FuncionariosAPIService.Models;
+using FuncionariosAPIService.Services;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,11 +16,12 @@ namespace FuncionariosAPIService.Controllers
     public class FuncionariosController : ApiController
     {
         private FuncionarioDbContext db = new FuncionarioDbContext();
+        private FuncionarioGet _funcionarioGet = new FuncionarioGet();
 
         // GET: api/Funcionarios      
         public IQueryable<Funcionario> GetFuncionarios()
         {
-            return db.Funcionarios;
+            return (IQueryable<Funcionario>)_funcionarioGet.execute();
         }
         // GET: api/Funcionarios/5
         [ResponseType(typeof(Funcionario))]
