@@ -17,6 +17,10 @@ namespace FuncionariosAPIService.Controllers
     {
         private FuncionarioDbContext db = new FuncionarioDbContext();
         private FuncionarioGet _funcionarioGet = new FuncionarioGet();
+        private FuncionarioGetID _funcionarioGetID = new FuncionarioGetID();
+        private FuncionarioInserir _funcionarioInserir = new FuncionarioInserir();
+        private FuncionarioAtualizar _funcionarioAtualizar = new FuncionarioAtualizar();
+        private FuncionarioExists _funcionarioExists = new FuncionarioExists();
 
         // GET: api/Funcionarios      
         public List<Funcionario> GetFuncionarios()
@@ -27,7 +31,7 @@ namespace FuncionariosAPIService.Controllers
         [ResponseType(typeof(Funcionario))]
         public IHttpActionResult GetFuncionario(int id)
         {
-            Funcionario funcionario = db.Funcionarios.Find(id);
+            Funcionario funcionario = _funcionarioGetID.execute(id);
             if (funcionario == null)
             {
                 return NotFound();
@@ -46,14 +50,14 @@ namespace FuncionariosAPIService.Controllers
             {
                 return BadRequest();
             }
-            db.Entry(funcionario).State = EntityState.Modified;
+            
             try
             {
-                db.SaveChanges();
+                _funcionarioAtualizar.execute(funcionario);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FuncionarioExists(id))
+                if (!_funcionarioExists.execute(funcionario))
                 {
                     return NotFound();
                 }
@@ -72,8 +76,8 @@ namespace FuncionariosAPIService.Controllers
             {
                 return BadRequest(ModelState);
             }
-            db.Funcionarios.Add(funcionario);
-            db.SaveChanges();
+
+            _funcionarioInserir.execute(funcionario);
             return CreatedAtRoute("DefaultApi", new { id = funcionario.FuncionarioId }, funcionario);
         }
         // DELETE: api/Funcionarios/5

@@ -42,6 +42,11 @@ namespace FuncionariosAPIService.Repositories
             _context.Entry(funcionario).State = EntityState.Modified;
         }
 
+        public bool ExistsFuncionario(Funcionario funcionario)
+        {
+            return _context.Funcionarios.Count(e => e.FuncionarioId == funcionario.FuncionarioId) > 0;
+        }
+
         public void SalvarFuncionario()
         {
             _context.SaveChanges();
@@ -65,6 +70,5 @@ namespace FuncionariosAPIService.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
     }
 }

@@ -14,6 +14,7 @@ namespace FuncionariosAPIService.Interfaces
         void InserirFuncionario(Funcionario funcionario);
         void DeletarFuncionario(int funcionarioID);
         void AtualizarFuncionario(Funcionario funcionario);
+        bool ExistsFuncionario(Funcionario funcionario);
         void SalvarFuncionario();
     }
 }
