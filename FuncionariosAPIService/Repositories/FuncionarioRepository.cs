@@ -11,6 +11,7 @@ namespace FuncionariosAPIService.Repositories
     public class FuncionarioRepository: IFuncionario
     {
         private FuncionarioDbContext _context;
+
         public FuncionarioRepository(FuncionarioDbContext funcionarioDbContext)
         {
             this._context = funcionarioDbContext;

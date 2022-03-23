@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FuncionariosAPIService.Interfaces
 {
-    interface IFuncionario: IDisposable
+    public interface IFuncionario: IDisposable
     {
         IEnumerable<Funcionario> GetFuncionarios();
         Funcionario GetFuncionarioPorID(int funcionarioID);

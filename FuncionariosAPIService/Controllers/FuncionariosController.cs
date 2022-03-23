@@ -1,4 +1,6 @@
-﻿using FuncionariosAPIService.Models;
+﻿using FuncionariosAPIService.Interfaces;
+using FuncionariosAPIService.Models;
+using FuncionariosAPIService.Repositories;
 using FuncionariosAPIService.Services;
 using System;
 using System.Collections.Generic;
@@ -15,13 +17,15 @@ namespace FuncionariosAPIService.Controllers
     [Authorize]
     public class FuncionariosController : ApiController
     {
+
         private FuncionarioDbContext db = new FuncionarioDbContext();
-        private FuncionarioGet _funcionarioGet = new FuncionarioGet();
+        private FuncionarioGet _funcionarioGet = new FuncionarioGet(new FuncionarioRepository(new FuncionarioDbContext()));
         private FuncionarioGetID _funcionarioGetID = new FuncionarioGetID();
         private FuncionarioInserir _funcionarioInserir = new FuncionarioInserir();
         private FuncionarioAtualizar _funcionarioAtualizar = new FuncionarioAtualizar();
         private FuncionarioExists _funcionarioExists = new FuncionarioExists();
         private FuncionarioDeletar _funcionarioDeletar = new FuncionarioDeletar();
+
 
         // GET: api/Funcionarios      
         public List<Funcionario> GetFuncionarios()

@@ -7,6 +7,7 @@ namespace FuncionariosAPIService.Models
     [Table("Funcionarios")]
     public class Funcionario
     {
+
         [Key]
         public int FuncionarioId { get; set; }
         public string Nome { get; set; }
