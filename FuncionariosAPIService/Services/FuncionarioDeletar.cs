@@ -12,15 +12,17 @@ namespace FuncionariosAPIService.Services
     {
         private IFuncionario _funcionarioRepository;
 
-        public FuncionarioDeletar()
+        public FuncionarioDeletar(IFuncionario funcionarioRepository)
         {
-            this._funcionarioRepository = new FuncionarioRepository(new FuncionarioDbContext());
+            this._funcionarioRepository = funcionarioRepository;
         }
 
-        public void execute(int funcionarioID)
+        public bool execute(int funcionarioID)
         {
             _funcionarioRepository.DeletarFuncionario(funcionarioID);
             _funcionarioRepository.SalvarFuncionario();
+
+            return true;
         }
     }
 }

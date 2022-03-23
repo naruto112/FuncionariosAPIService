@@ -12,15 +12,17 @@ namespace FuncionariosAPIService.Services
     {
         private IFuncionario _funcionarioRepository;
 
-        public FuncionarioAtualizar()
+        public FuncionarioAtualizar(IFuncionario funcionarioRepository)
         {
-            this._funcionarioRepository = new FuncionarioRepository(new FuncionarioDbContext());
+            this._funcionarioRepository = funcionarioRepository;
         }
 
-        public void execute(Funcionario funcionario)
+        public Funcionario execute(Funcionario funcionario)
         {
             _funcionarioRepository.AtualizarFuncionario(funcionario);
             _funcionarioRepository.SalvarFuncionario();
+
+            return funcionario;
         }
 
     }

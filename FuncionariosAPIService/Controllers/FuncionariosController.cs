@@ -20,11 +20,11 @@ namespace FuncionariosAPIService.Controllers
 
         private FuncionarioDbContext db = new FuncionarioDbContext();
         private FuncionarioGet _funcionarioGet = new FuncionarioGet(new FuncionarioRepository(new FuncionarioDbContext()));
-        private FuncionarioGetID _funcionarioGetID = new FuncionarioGetID();
-        private FuncionarioInserir _funcionarioInserir = new FuncionarioInserir();
-        private FuncionarioAtualizar _funcionarioAtualizar = new FuncionarioAtualizar();
-        private FuncionarioExists _funcionarioExists = new FuncionarioExists();
-        private FuncionarioDeletar _funcionarioDeletar = new FuncionarioDeletar();
+        private FuncionarioGetID _funcionarioGetID = new FuncionarioGetID(new FuncionarioRepository(new FuncionarioDbContext()));
+        private FuncionarioInserir _funcionarioInserir = new FuncionarioInserir(new FuncionarioRepository(new FuncionarioDbContext()));
+        private FuncionarioAtualizar _funcionarioAtualizar = new FuncionarioAtualizar(new FuncionarioRepository(new FuncionarioDbContext()));
+        private FuncionarioExists _funcionarioExists = new FuncionarioExists(new FuncionarioRepository(new FuncionarioDbContext()));
+        private FuncionarioDeletar _funcionarioDeletar = new FuncionarioDeletar(new FuncionarioRepository(new FuncionarioDbContext()));
 
 
         // GET: api/Funcionarios      

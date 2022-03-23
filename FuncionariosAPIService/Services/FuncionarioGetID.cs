@@ -12,9 +12,9 @@ namespace FuncionariosAPIService.Services
     {
         private IFuncionario _funcionarioRepository;
 
-        public FuncionarioGetID()
+        public FuncionarioGetID(IFuncionario funcionarioRepository)
         {
-            this._funcionarioRepository = new FuncionarioRepository(new FuncionarioDbContext());
+            this._funcionarioRepository = funcionarioRepository;
         }
 
         public Funcionario execute(int funcionarioID)

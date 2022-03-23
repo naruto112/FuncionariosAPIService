@@ -45,7 +45,7 @@ namespace FuncionariosAPIService.Repositories
 
         public bool ExistsFuncionario(Funcionario funcionario)
         {
-            return _context.Funcionarios.Count(e => e.FuncionarioId == funcionario.FuncionarioId) > 0;
+            return _context.Funcionarios.Count(e => e.Email == funcionario.Email) > 0;
         }
 
         public void SalvarFuncionario()
